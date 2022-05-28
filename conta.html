@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Secretaria Virtual da Universidade Lusiada de Lisboa</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+  
+    <link href='fullcalendar/packages/core/main.css' rel='stylesheet' />
+    <link href='fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
+
+    <!-- Bootstrap core JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Calendar V19 Stuff -->
+    <script src='fullcalendar/packages/core/main.js'></script>
+    <script src='fullcalendar/packages/interaction/main.js'></script>
+    <script src='fullcalendar/packages/daygrid/main.js'></script>   
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/headers.css" rel="stylesheet">
+    <link href="css/blog.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+
+  </head>
+<body onload="user_name()">
+
+<header>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+    <div>
+      <button class="navbar-toggler margin-left-xs" type="button" data-bs-toggle="offcanvas" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="margin-left-s" href="index.html">
+        <img src="img/ULL_logo.png">
+      </a>
+    </div>
+    <div class="offcanvas offcanvas-start bg-dark" id="navbarCollapse" style="visibility: visible;" aria-modal="true" role="dialog">
+      <div class="margin-top-s margin-bottom-s">
+        <a class="margin-left-xs">
+          <img src="img/ULL_logo.png">
+        </a>
+      <!--<button type="button" class="btn-close margin-left-s" data-bs-dismiss="offcanvas" style="cursor:pointer"></button>-->
+    </div><!--
+      <a class="p-2" style="margin-left: 15px;">
+        <img src="img/ULL_logo.png">
+      </a>-->
+      <ul class="navbar-nav me-auto p-2">
+        <li class="nav-item dropdown me-2">
+            <a class="nav-link text-white dropdown-toggle" href="#" id="dropdown12" data-bs-toggle="dropdown" aria-expanded="false">Secretaria</a>
+              <ul class="dropdown-menu" aria-labelledby="dropdown12">
+                <li><a class="dropdown-item" href="conta.html" id="conta">Conta</a></li>
+                <li><a class="dropdown-item" href="horario.html" id="horario">Horários</a></li>
+                <li><a class="dropdown-item" href="notas.html" id="notas">Notas</a></li>
+                <li><a class="dropdown-item" href="calendario.html" id="calendario">Calendário de Avaliações</a></li>
+              </ul>
+            </li>
+          <li class="nav-item dropdown me-2">
+              <a class="nav-link text-white dropdown-toggle" href="#" id="dropdown22" data-bs-toggle="dropdown" aria-expanded="false">Tesouraria</a>
+              <ul class="dropdown-menu" aria-labelledby="dropdown22">
+                <li><a class="dropdown-item" href="pagamentos.html" id="pagamentos">Pagamentos em falta</a></li>
+                <li><a class="dropdown-item" href="movimentos.html" id="movimentos">Movimentos</a></li>
+              </ul>
+            </li>
+          <li class="nav-item me-2">
+            <a href="http://moodle.lis.ulusiada.pt/" target="_blank" class="nav-link text-white" aria-current="page">Moodle</a>
+          </li>
+          <li class="nav-item me-2">
+            <a href="http://caam.lis.ulusiada.pt/" target="_blank" class="nav-link text-white" aria-current="page">CAAM</a>
+          </li>       
+        </ul>
+        <!- only one will appear log in or log out --
+        <form class="d-flex me-2 p-2">
+          <a href="login.html" class="btn btn-primary" id="login">Log in</a>
+          <span id="logged_in">
+          <img id="profile" src="" class="rounded-circle me-3" style="width: 40px; height: 40px;"></img>
+          <a id="text" class="text-white py-2 me-2" style="text-decoration:none"></a>
+          <a id="logout" class="btn btn-danger">Log out</a>
+        </span>
+        </form>
+
+        <!-- script for log in and log out hide function -->
+        <script>
+        $(document).ready(function(){
+          let user = JSON.parse(sessionStorage.getItem("user"));
+          console.log('User: ', user);
+          if (user === null) {
+            $("#login").show();
+            $("#logged_in").hide(); 
+            $("#logged").hide();         
+          } else {
+            $("#login").hide();
+            $("#logged_in").show();
+            $("#logged").show();
+            $("#profile").attr("src", user.image);
+            $("#HT").attr("src", user.horario);
+          }
+        });
+        </script>
+
+      
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+<main class="flex-shrink-0">
+  <div class="container">
+    <a href="index.html"class="nav-link" style="padding-left: 0px;margin-top: 16px;margin-bottom: 0px;">Inicio->Secretaria->Notas</a>
+    <h3 class="fw-normal" >Aqui ficam todas as informações relacionadas com os seus dados pessoais</h3>
+    <div class="py-2" id="table_conta">
+      
+    </div>
+  </div>
+</main>
+
+<script>
+  $(document).ready(function(){
+    $("#logout").click(function(){
+      sessionStorage.clear();
+      location.replace("index.html");
+      })
+    });
+</script>
+
+<script>
+  $(document).ready(function(){
+  // get the reference for the body
+  //var body = document.getElementsByTagName("body")[0];
+  
+  let user = JSON.parse(sessionStorage.getItem("user"));
+  let pagamentos = [user.fullName, user.nascimento, user.cc, user.pai, user.mae, user.morada, user.postcard, user.localidade, user.conselho, user.distrito, user.telem, user.telef, user.numero, user.emailCurso, user.curso, user.anoCurso, user.inscricao];
+  let text = ["Nome", "Data de Nascimento", "Bi/CC", "Nome do Pai", "Nome da Mãe", "Morada", "Código Postal", "Localidade", "conselho", "Distrito", "Telemovel", "Telefone", "Número de Aluno", "Email", "Curso", "Ano do Curso", "Ano da Inscrição"];
+
+  //console.log("ter:" text);
+  //console.log("tem:" pagamentos);
+
+  console.log('tem: ', pagamentos);
+  console.log('text: ', text);
+
+  // creates a <table> element and a <tbody> element
+  var tbl = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+
+  // creating all cells
+  for (var i = 0; i < pagamentos.length; i++) {
+    // creates a table row
+    var row = document.createElement("tr");
+    tbl.setAttribute('class', "table table-hover table-bordered");
+
+    for (var j = 0; j < 2; j++) {
+      // Create a <td> element and a text node, make the text
+      // node the contents of the <td>, and put the <td> at
+      // the end of the table row
+      var cell = document.createElement("td");
+      var header = document.createElement("th");
+      
+
+      if (j == 0){
+        var headerText = document.createTextNode(text[i]);
+        header.appendChild(headerText);
+        row.appendChild(header);
+      }
+      else{
+        var cellText = document.createTextNode(pagamentos[i]);
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+      }
+      
+    }
+
+    // add the row to the end of the table body
+    tblBody.appendChild(row);
+  }
+
+  // put the <tbody> in the <table>
+  tbl.appendChild(tblBody);
+  // appends <table> into <body>
+  //body.appendChild(tbl);
+  // sets the border attribute of tbl to 2;
+
+  var div_doc = document.getElementById("table_conta")
+  div_doc.appendChild(tbl)
+
+});
+</script>
+
+
+<footer class="footer mt-auto py-3">
+  <div class="container">
+
+  </div>
+</footer>
+
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/tooltip.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+
+<!-- For the name of the user -->
+<script>
+  function user_name(){
+    var user = JSON.parse(sessionStorage.getItem("user"));
+    document.getElementById("text").innerHTML = user.fullName;
+  }
+</script>

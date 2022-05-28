@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Secretaria Virtual</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+  
+    <link href='fullcalendar/packages/core/main.css' rel='stylesheet' />
+    <link href='fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
+
+    <!-- Bootstrap core JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Calendar V19 Stuff -->
+    <script src='fullcalendar/packages/core/main.js'></script>
+    <script src='fullcalendar/packages/interaction/main.js'></script>
+    <script src='fullcalendar/packages/daygrid/main.js'></script>  
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <!-- Custom styles for this template -->
+    <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/headers.css" rel="stylesheet">
+    <link href="css/blog.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/calendar.css" rel="stylesheet">
+
+
+</head>
+
+<body onload="user_name()">
+
+<header>
+  <!-- Fixed navbar -->
+<nav class="navbar navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+    <div>
+      <button class="navbar-toggler margin-left-xs" type="button" data-bs-toggle="offcanvas" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="margin-left-s" href="index.html">
+        <img src="img/ULL_logo.png">
+      </a>
+    </div>
+    <div class="offcanvas offcanvas-start bg-dark" id="navbarCollapse" style="visibility: visible;" aria-modal="true" role="dialog">
+      <div class="margin-top-s margin-bottom-s">
+        <a class="margin-left-xs">
+          <img src="img/ULL_logo.png">
+        </a>
+      <!--<button type="button" class="btn-close margin-left-s" data-bs-dismiss="offcanvas" style="cursor:pointer"></button>-->
+    </div><!--
+      <a class="p-2" style="margin-left: 15px;">
+        <img src="img/ULL_logo.png">
+      </a>-->
+      <ul class="navbar-nav me-auto p-2">
+        <li class="nav-item dropdown me-2">
+            <a class="nav-link text-white dropdown-toggle" href="#" id="dropdown12" data-bs-toggle="dropdown" aria-expanded="false">Secretaria</a>
+              <ul class="dropdown-menu" aria-labelledby="dropdown12">
+                <li><a class="dropdown-item" href="conta.html" id="conta">Conta</a></li>
+                <li><a class="dropdown-item" href="horario.html" id="horario">Horários</a></li>
+                <li><a class="dropdown-item" href="notas.html" id="notas">Notas</a></li>
+                <li><a class="dropdown-item" href="calendario.html" id="calendario">Calendário de Avaliações</a></li>
+              </ul>
+            </li>
+          <li class="nav-item dropdown me-2">
+              <a class="nav-link text-white dropdown-toggle" href="#" id="dropdown22" data-bs-toggle="dropdown" aria-expanded="false">Tesouraria</a>
+              <ul class="dropdown-menu" aria-labelledby="dropdown22">
+                <li><a class="dropdown-item" href="pagamentos.html" id="pagamentos">Pagamentos em falta</a></li>
+                <li><a class="dropdown-item" href="movimentos.html" id="movimentos">Movimentos</a></li>
+              </ul>
+            </li>
+          <li class="nav-item me-2">
+            <a href="http://moodle.lis.ulusiada.pt/" target="_blank" class="nav-link text-white" aria-current="page">Moodle</a>
+          </li>
+          <li class="nav-item me-2">
+            <a href="http://caam.lis.ulusiada.pt/" target="_blank" class="nav-link text-white" aria-current="page">CAAM</a>
+          </li>       
+        </ul>
+        <!- only one will appear log in or log out --
+        <form class="d-flex me-2 p-2">
+          <a href="login.html" class="btn btn-primary" id="login">Log in</a>
+          <span id="logged_in">
+          <img id="profile" src="" class="rounded-circle me-3" style="width: 40px; height: 40px;"></img>
+          <a id="text" class="text-white py-2 me-2" style="text-decoration:none"></a>
+          <a id="logout" class="btn btn-danger">Log out</a>
+        </span>
+        </form>
+
+        <!-- script for log in and log out hide function -->
+        <script>
+        $(document).ready(function(){
+          let user = JSON.parse(sessionStorage.getItem("user"));
+          console.log('User: ', user);
+          if (user === null) {
+            $("#login").show();
+            $("#logged_in").hide(); 
+            $("#logged").hide();
+            $("#HT").hide();
+            $("#HC").hide();
+            $("#notlog").show();          
+          } else {
+            $("#login").hide();
+            $("#logged_in").show();
+            $("#logged").show();
+            $("#profile").attr("src", user.image);
+            $("#HT").attr("src", user.horario);
+            $("#notlog").hide();
+          }
+        });
+        </script>
+
+        <!-- For the name of the user -->
+        <script>
+          function user_name(){
+            var user = JSON.parse(sessionStorage.getItem("user"));
+            document.getElementById("text").innerHTML = user.fullName;
+          }
+        </script>
+     
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+<main class="py-3 container-fluid">
+  <div class="container-fluid carousel-fade">
+  <div id="carouselExampleSlidesOnly" class="carousel slide border border-4 border-dark border-top-0 border-start-0 border-end-0" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/FULL.jpg" class="d-block w-100 image-fluid height-max-in" data-bs-interval="500">
+    </div>
+    <div class="carousel-item ">
+      <img src="img/FULL1.jpg" class="d-block w-100 image-fluid height-max-in" data-bs-interval="500">
+    </div>
+    <div class="carousel-item ">
+      <img src="img/FULL2.jpg" class="d-block w-100 image-fluid height-max-in" data-bs-interval="500">
+    </div>
+    <div class="carousel-item ">
+      <img src="img/FULL3.jpg" class="d-block w-100 image-fluid height-max-in" data-bs-interval="500">
+    </div>
+    <div class="carousel-item ">
+      <img src="img/FULL4.jpg" class="d-block w-100 image-fluid height-max-in" data-bs-interval="500">
+    </div>
+    <div class="carousel-item ">
+      <img src="img/FULL5.jpg" class="d-block w-100 image-fluid height-max-in" data-bs-interval="500">
+    </div>
+    <div class="carousel-item ">
+      <img src="img/FULL6.jpg" class="d-block w-100 image-fluid height-max-in" data-bs-interval="500">
+    </div>
+  </div>
+</div> 
+<div class="row">
+  <div class="col-md-7">
+    <p>
+    <h1 class="fw-bolder p-2">Bem vindo á Secretaria Virtual da Universidade Lusiada de Lisboa</h1>
+    <h4 class="fw-normal p-2">Aqui pode encontrar toda a informação que precisa acerca de si. Para além disso, temos também info sobre eventos que possam vir a decorrer, ou que esteja a decorrer.</h4>
+    <h1 class="fst-italic p-4 text-decoration-underline">Eventos</h1>
+    <p>
+      <h3 class="fw-bold p-2">Lusiada Games Weekend</h3>
+      <h4 class="fw-normal p-2">De 9 a 10 de Abril irá decorrer um fim de semana de jogos, palestras e exposição do curso de Engenharia Informática, com o objetivo de atrair estudantes do secundario para a nossa Faculdade. Mais informação neste link <a target="_blank" href="http://lgwd2022.lis.ulusiada.pt/lgw22/Create">aqui</a>.</h4>
+      <img src="img/lgw.jpg" class="d-block w-100 image-fluid p-2">
+    </p>
+  </p>
+  
+</div>
+  <div class="col-md-5 backgroundColorSec">
+    <!--  border border-2 border-dark border-top-0 border-end-0 border-bottom-0  backgroundColorSec  -->
+    <p>
+  <div class="container p-2">
+  <h2 class="fw-bolder p-2 text-decoration-underline">Horário e Calendário</h2>
+  <h4 id="notlog">Aqui fica o seu horário e o calendário de eventos/avaliações</h4>
+  <a id="logged">
+    <p><h4 id="HC">Aqui encontra o <a href="horario.html">seu horário</a> e o <a href="calendario.html">seu calendário</a>.</h4>
+      <div class="py-2" id="table_horario">
+        
+      </div>
+    <div class="py-3" id='calendar'></div>
+  </p>
+  </a>
+</p>
+</div>
+</div>
+<!--
+<div class="col-6">
+  <h1 class="fst-italic py-4 text-decoration-underline">Eventos</h1>
+  <p> 
+    <h3 class="fw-bold">Lusiada Games Weekend</h3>
+    <h4 class="fw-normal py-2">De 9 a 10 de Abril irá decorrer um fim de semana de jogos, palestras e exposição do curso de Engenharia Informática, com o objetivo de atrair estudantes do secundario para a nossa Faculdade. Mais informação neste link <a target="_blank" href="http://lgwd2022.lis.ulusiada.pt/lgw22/Create">aqui</a>.</h4>
+    <img src="img/lgw.jpg" class="d-block w-100 image-fluid">
+  </p>
+</div>
+-->
+</div>
+
+</div>
+
+<script>
+  $(document).ready(function(){
+    var calendarEl = document.getElementById('calendar');
+    var user = JSON.parse(sessionStorage.getItem("user"));
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      plugins: [ 'interaction', 'dayGrid' ],
+      defaultDate: '2022-04-05',
+      locale: 'pt',
+      editable: false,
+      eventLimit: true, // allow "more" link when too many events    
+        eventRender: function(info) {
+         var tooltip = new Tooltip(info.el, {
+            title: info.event.title,
+            placement: 'top',
+            trigger: 'hover',
+            container: 'body'
+          });
+        },
+        events: user.events
+    });
+
+    calendar.render();        
+    });
+</script>
+
+<!--
+  Horario
+-->
+<script>
+$(document).ready(function(){
+  // get the reference for the body
+  //var body = document.getElementsByTagName("body")[0];
+  
+  let user = JSON.parse(sessionStorage.getItem("user"));
+  let horario = user.horario;
+  let text = ["Horas", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+
+  //console.log("ter:" text);
+  //console.log("tem:" pagamentos);
+
+  console.log('tem: ', horario);
+  console.log('text: ', user.horario[1]);
+
+  // creates a <table> element and a <tbody> element
+  var tbl = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+
+  // creating all cells
+  for (var i = 0; i < 8; i++) {
+    // creates a table row
+    var row = document.createElement("tr");
+    tbl.setAttribute('class', "table table-hover table-bordered");
+
+    for (var j = 0; j < 7; j++) {
+      // Create a <td> element and a text node, make the text
+      // node the contents of the <td>, and put the <td> at
+      // the end of the table row
+      var cell = document.createElement("td");
+      var header = document.createElement("th");
+      
+
+      if (i == 0){
+        var headerText = document.createTextNode(text[j]);
+        header.appendChild(headerText);
+        row.appendChild(header);
+      }
+      else{
+        var ii = i-1;
+        let ctext = horario[ii];
+        var cellText = document.createTextNode(ctext[j]);
+        console.log('1: ', ctext);
+        console.log('2: ', cellText);
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+      }
+      
+    }
+
+    // add the row to the end of the table body
+    tblBody.appendChild(row);
+  }
+
+  // put the <tbody> in the <table>
+  tbl.appendChild(tblBody);
+  // appends <table> into <body>
+  //body.appendChild(tbl);
+  // sets the border attribute of tbl to 2;
+
+  var div_doc = document.getElementById("table_horario")
+  div_doc.appendChild(tbl)
+
+});
+</script>
+
+
+
+<!--
+  <div class="container">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/ULL1.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item active">
+      <img src="img/ULL2.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item active">
+      <img src="img/ULL3.png" class="d-block w-100" alt="...">
+    </div>
+  </div>
+</div> 
+-->
+  </div>
+</main>
+
+<script>
+  $(document).ready(function(){
+    $("#logout").click(function(){
+      sessionStorage.clear();
+      location.replace("index.html");
+      })
+    });
+</script>
+
+<!--
+
+<footer class="footer mt-auto py-3">
+  <div class="container container-fluid">
+    
+  
+  </div>
+</footer>
+-->
+
+  <script src="assets/js/popper.min.js"></script>
+  <script src="js/sidebars.js"></script>
+<script src="assets/js/tooltip.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+
+
